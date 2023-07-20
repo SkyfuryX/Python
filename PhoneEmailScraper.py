@@ -1,8 +1,10 @@
 #! python3
 
+
+
 import pyperclip, re
 
-#TODO: Create regex opjects for phone numbers
+#TODO: Create regex objects for phone numbers
 phoneRegex = re.compile(r'''
 (((\d\d\d)|(\(\d\d\d\)))? #area code (optional)
 (\s|-)?         # first separator(optional)
@@ -13,7 +15,7 @@ phoneRegex = re.compile(r'''
 (\d{2,5}))?)     #extention digits(optional)
 ''',re.VERBOSE)
 
-#TODO: Create regex opbjects for email address
+#TODO: Create regex objects for email address
 emailRegex = re.compile(r'''
 \S+ #beginning of email
 @ # @ symbol
@@ -29,7 +31,8 @@ text = pyperclip.paste()
 extractedPhone = phoneRegex.findall(text)
 extractedEmail = emailRegex.findall(text)
 
-allPhoneNumbers = []
+# Gathers only the first group from tuples cause by grouping
+allPhoneNumbers = [] 
 for phoneNumber in extractedPhone:
     allPhoneNumbers.append(phoneNumber[0])
 
