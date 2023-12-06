@@ -1,10 +1,8 @@
 #! python3
-
 import re
 
 data = open('day4input.txt').read().strip()
 score = 0
-current_card = 0
 global next_card
 next_card = [0,0,0,0,0,0,0,0,0,0,0,0]
 
@@ -35,10 +33,7 @@ for line in data.split("\n"):
             copies(number_matching)  
 
     #moves the number of copies to come up the chain and resets the farthest one out
-    for n in range(len(next_card)):
-        try:
-            next_card[n] = next_card[n+1]
-        except:
-            IndexError
+    for n in range(11):
+        next_card[n] = next_card[n+1]
 
 print('The score is: ' + str(score))
